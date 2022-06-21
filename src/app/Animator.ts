@@ -45,15 +45,7 @@ export default class Animator {
           header.style.transform = `translateX(${position * -15}px)`;
         }
 
-        if (this.obj.root) {
-          this.obj.root.children.forEach((child, i) => {
-            if (i > position) {
-              child.visible = true;
-            } else {
-              child.visible = false;
-            }
-          });
-        }
+        this.obj.scroll({ position, percent });
       }
     }
   }

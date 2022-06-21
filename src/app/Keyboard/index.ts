@@ -17,4 +17,22 @@ export class Keyboard {
       this.onload();
     });
   }
+
+  scroll({ position, percent }: { position: number; percent: number }) {
+    if (this.root) {
+      this.root.children.forEach((child, i) => {
+        console.log(child.name);
+        if (
+          child.name.startsWith("Knob") ||
+          child.name.startsWith("Cylinder")
+        ) {
+          if (child.name === "Cylinder001") return;
+          if (percent > 0.1) {
+            const offset = 0.1;
+            child.rotation.y = (percent - offset) * 10;
+          }
+        }
+      });
+    }
+  }
 }
